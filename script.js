@@ -1,4 +1,5 @@
-const romanNumerals = [
+function convertToRoman(num) {
+  const romanNumerals = [
     { value: 1000, symbol: 'M' },
     { value: 900, symbol: 'CM' },
     { value: 500, symbol: 'D' },
@@ -15,12 +16,16 @@ const romanNumerals = [
   ];
 
   let result = '';
-
-    for (let i = 0; i < romanNumerals.length; i++) {
-        while (num >= romanNumerals[i].value) {
-            result += romanNumerals[i].symbol;
-            num -= romanNumerals[i].value;
-        }
-
+  for (let i = 0; i < romanNumerals.length; i++) {
+    while (num >= romanNumerals[i].value) {
+      result += romanNumerals[i].symbol;
+      num -= romanNumerals[i].value;
     }
-    return result;
+  }
+  return result;
+}
+
+// Do not change the code below
+const num = prompt("Enter a number:");
+alert(convertToRoman(Number(num)));
+
