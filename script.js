@@ -15,6 +15,11 @@ function convertToRoman(num) {
     { value: 1, symbol: 'I' }
   ];
 
+  // guard: coerce to integer and handle non-positive
+  if (typeof num !== 'number' || Number.isNaN(num)) return '';
+  num = Math.floor(num);
+  if (num <= 0) return '';
+
   let result = '';
   for (let i = 0; i < romanNumerals.length; i++) {
     while (num >= romanNumerals[i].value) {
@@ -22,7 +27,7 @@ function convertToRoman(num) {
       num -= romanNumerals[i].value;
     }
   }
-  return result;
+  return result.toUpperCase();
 }
 
 // Do not change the code below
